@@ -542,6 +542,55 @@ section { padding: 6rem 3rem; position: relative; z-index: 1; }
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
   gap: 1.5rem;
 }
+.project-card-wide { grid-column: 1 / -1; }
+.project-lead {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin-bottom: 1.4rem;
+  max-width: 720px;
+}
+
+/* PIPELINE FLOW */
+.pipeline-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.6rem;
+  padding: 1.1rem;
+  background: rgba(0,212,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+.pf-stage {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  color: var(--text);
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 0.45rem 0.8rem;
+  border-radius: 3px;
+  white-space: nowrap;
+  transition: border-color 0.2s, color 0.2s;
+}
+.pf-stage:hover { border-color: var(--accent); color: var(--accent); }
+.pf-stage-end {
+  border-color: rgba(16,185,129,0.4);
+  color: var(--accent3);
+}
+.pf-arrow {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
+@media (max-width: 640px) {
+  .pipeline-flow { flex-direction: column; align-items: stretch; }
+  .pf-arrow { text-align: center; transform: rotate(90deg); }
+  .pf-stage { text-align: center; }
+}
 .project-card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -985,6 +1034,58 @@ footer .accent { color: var(--accent); }
         <span class="stack-badge badge-green">DynamoDB</span>
         <span class="stack-badge badge-purple">Cognito</span>
         <span class="stack-badge badge-orange">S3</span>
+      </div>
+    </div>
+
+    <div class="project-card project-card-wide">
+      <div class="project-num"><span>PROJECT_03</span><span class="p-meta">Technohertz Technologies LLP</span></div>
+      <div class="project-title">Production CI/CD Pipeline — Jenkins, Bitbucket & Amazon EKS</div>
+      <p class="project-lead">End-to-end pipeline I designed and now maintain in production, taking client applications from a raw code commit to a running pod on EKS with no manual steps in between.</p>
+
+      <div class="pipeline-flow" aria-label="Pipeline stages: Checkout, Build and Test, Quality Checks, Dockerize, Push to ECR, Deploy to EKS">
+        <span class="pf-stage">Checkout</span><span class="pf-arrow">→</span>
+        <span class="pf-stage">Maven Build & Test</span><span class="pf-arrow">→</span>
+        <span class="pf-stage">Code Quality Checks</span><span class="pf-arrow">→</span>
+        <span class="pf-stage">Docker Build</span><span class="pf-arrow">→</span>
+        <span class="pf-stage">Push to ECR</span><span class="pf-arrow">→</span>
+        <span class="pf-stage pf-stage-end">Deploy to EKS</span>
+      </div>
+
+      <ul class="project-desc-list">
+        <li>Built <strong>declarative Jenkins pipelines</strong> integrated with Bitbucket Pipelines, automating checkout, build, testing, and deployment for multiple client projects.</li>
+        <li>Automated <strong>Java/Maven build workflows</strong> using YAML-based pipeline definitions — running unit tests, code quality checks, and WAR packaging on every commit, before QA ever touches the build.</li>
+        <li>Automated the <strong>Docker image build-and-push cycle to Amazon ECR</strong>, wired directly into rolling deployments on Amazon EKS — this is the change that cut deployment time by roughly <strong>30%</strong>.</li>
+        <li>Scoped every stage with <strong>least-privilege IAM roles</strong>, so pipeline credentials only ever touch the ECR repos and EKS resources they need.</li>
+        <li>Kept the pipeline healthy in production — diagnosed and fixed real failures as they came up: CSP violations, WAR deployment errors, SSH authentication issues, and HTTP 503s during rollout.</li>
+      </ul>
+      <div class="project-stack">
+        <span class="stack-badge badge-green">Jenkins</span>
+        <span class="stack-badge badge-blue">Bitbucket Pipelines</span>
+        <span class="stack-badge badge-orange">Maven</span>
+        <span class="stack-badge badge-green">Docker</span>
+        <span class="stack-badge badge-blue">Amazon ECR</span>
+        <span class="stack-badge badge-purple">Amazon EKS</span>
+        <span class="stack-badge badge-orange">YAML</span>
+      </div>
+    </div>
+
+    <div class="project-card project-card-wide">
+      <div class="project-num"><span>PROJECT_04</span><span class="p-meta">Ongoing · Client Support</span></div>
+      <div class="project-title">EC2 Vulnerability Remediation & Client Production Support</div>
+      <p class="project-lead">Beyond shipping pipelines, I'm the person clients reach when something's broken in production or a security scan flags a server — from first report to verified fix.</p>
+      <ul class="project-desc-list">
+        <li><strong>Vulnerability remediation:</strong> ran scheduled security remediation on client-facing AWS EC2 instances running Ubuntu 24.04 — package upgrades, security patching, and kernel updates.</li>
+        <li><strong>Compliance verification:</strong> re-scanned and verified each server after remediation so fixes actually closed the flagged vulnerabilities, not just papered over them.</li>
+        <li><strong>Incident troubleshooting:</strong> triaged and resolved live client issues — WAR deployment failures, SSH authentication errors, HTTP 503s, and Content-Security-Policy violations — to minimize downtime.</li>
+        <li><strong>IAM hardening:</strong> tightened access policies on affected instances and pipelines as part of remediation, closing off unnecessary permissions alongside the patching work.</li>
+        <li><strong>Repository & release support:</strong> managed Bitbucket branching, pull requests, and merge conflicts to keep client releases moving while fixes were in progress.</li>
+      </ul>
+      <div class="project-stack">
+        <span class="stack-badge badge-orange">AWS EC2</span>
+        <span class="stack-badge badge-green">Ubuntu 24.04</span>
+        <span class="stack-badge badge-blue">IAM</span>
+        <span class="stack-badge badge-purple">Security Patching</span>
+        <span class="stack-badge badge-orange">Bitbucket</span>
       </div>
     </div>
 
