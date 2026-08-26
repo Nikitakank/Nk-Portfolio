@@ -107,6 +107,34 @@ body::after {
   pointer-events: none; z-index: 0;
 }
 
+/* FLOATING DEVSECOPS ICONS (hero background) */
+.floating-icons {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.f-icon {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0.1;
+  filter: grayscale(0.3);
+  animation: floatDrift 9s ease-in-out infinite;
+}
+.fi-1 { top: 12%; left: 6%; animation-delay: 0s; font-size: 2.4rem; }
+.fi-2 { top: 68%; left: 10%; animation-delay: 1.2s; font-size: 2rem; }
+.fi-3 { top: 20%; left: 42%; animation-delay: 2.4s; font-size: 1.8rem; }
+.fi-4 { top: 78%; left: 46%; animation-delay: 3.6s; font-size: 2.2rem; }
+.fi-5 { top: 15%; right: 8%; animation-delay: 1.8s; font-size: 2.6rem; }
+.fi-6 { top: 72%; right: 14%; animation-delay: 3s; font-size: 2rem; }
+@keyframes floatDrift {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(10px, -18px) rotate(6deg); }
+}
+@media (max-width: 900px) {
+  .floating-icons { display: none; }
+}
+
 /* NAV */
 nav {
   position: fixed; top: 0; left: 0; right: 0;
@@ -678,6 +706,11 @@ section { padding: 6rem 3rem; position: relative; z-index: 1; }
   transition: all 0.3s;
 }
 .learning-card:hover { border-color: rgba(124,58,237,0.4); transform: translateY(-4px); }
+.learning-card-featured {
+  border-color: rgba(239,68,68,0.3);
+  background: linear-gradient(180deg, rgba(239,68,68,0.05), var(--card) 40%);
+}
+.learning-card-featured:hover { border-color: rgba(239,68,68,0.5); }
 .learning-icon {
   width: 44px; height: 44px;
   border-radius: 4px;
@@ -688,8 +721,60 @@ section { padding: 6rem 3rem; position: relative; z-index: 1; }
 .l-blue { background: rgba(0,212,255,0.1); }
 .l-purple { background: rgba(124,58,237,0.1); }
 .l-green { background: rgba(16,185,129,0.1); }
+.l-red { background: rgba(239,68,68,0.12); }
 .learning-body h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
 .learning-body p { color: var(--muted); font-size: 0.82rem; line-height: 1.6; }
+
+/* DEVSECOPS LOOP (signature illustration) */
+.devsecops-section { text-align: center; }
+.devsecops-lead {
+  color: var(--muted);
+  max-width: 640px;
+  margin: 0 auto 3rem;
+  line-height: 1.7;
+  font-size: 1rem;
+}
+.devsecops-loop-wrap {
+  display: flex; justify-content: center;
+  margin-bottom: 2rem;
+}
+.devsecops-loop {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+}
+.loop-node circle { transition: stroke 0.3s, transform 0.3s; transform-origin: center; }
+.loop-node:hover circle { stroke: var(--accent); }
+.loop-node-accent circle { filter: drop-shadow(0 0 6px rgba(0,212,255,0.4)); }
+.loop-runner {
+  animation: loopRun 6s linear infinite;
+  transform-origin: 300px 300px;
+}
+@keyframes loopRun {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -1382; }
+}
+.devsecops-note {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  font-size: 0.88rem;
+  color: var(--muted);
+  max-width: 560px;
+  line-height: 1.6;
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 0.9rem 1.4rem;
+  border-radius: 4px;
+}
+.devsecops-note strong { color: var(--text); }
+.dot-live {
+  width: 8px; height: 8px; flex-shrink: 0;
+  background: var(--accent3);
+  border-radius: 50%;
+  animation: blink 1.5s ease-in-out infinite;
+}
+@media (max-width: 640px) {
+  .devsecops-note { flex-direction: column; text-align: left; }
+}
 
 /* CONTACT */
 #contact { background: var(--surface); }
@@ -802,6 +887,7 @@ footer .accent { color: var(--accent); }
     <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#skills">Skills</a></li>
+    <li><a href="#devsecops">DevSecOps</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#certifications">Certs</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -825,7 +911,7 @@ footer .accent { color: var(--accent); }
     <p class="hero-desc">
       <span class="highlight">DevOps & Cloud Engineer</span> at Technohertz Technologies LLP, Pune.<br>
       I build CI/CD pipelines, automate deployments, and run AWS infrastructure that doesn't need babysitting.<br>
-      Currently going deeper on <span class="highlight">DevSecOps</span>.
+      Currently going deeper on <span class="highlight">Agentic AI for DevOps</span>.
     </p>
     <div class="hero-ctas">
       <a href="#projects" class="btn-primary">View Projects</a>
@@ -845,6 +931,16 @@ footer .accent { color: var(--accent); }
         <span class="stat-label">Cloud Focus</span>
       </div>
     </div>
+  </div>
+
+  <!-- Floating DevSecOps icons (decorative) -->
+  <div class="floating-icons" aria-hidden="true">
+    <span class="f-icon fi-1">🔒</span>
+    <span class="f-icon fi-2">☁️</span>
+    <span class="f-icon fi-3">🛡️</span>
+    <span class="f-icon fi-4">⚙️</span>
+    <span class="f-icon fi-5">🐳</span>
+    <span class="f-icon fi-6">📦</span>
   </div>
 
   <!-- TERMINAL -->
@@ -996,49 +1092,81 @@ footer .accent { color: var(--accent); }
   </div>
 </section>
 
+<!-- DEVSECOPS LOOP (signature illustration) -->
+<section id="devsecops" class="devsecops-section">
+  <div class="section-label">Philosophy</div>
+  <div class="section-title">Security, Built Into Every Stage</div>
+  <p class="devsecops-lead">I don't treat security as a final checkpoint before release — it travels with the code from the first commit to the running pod. Here's how that loop looks in practice.</p>
+
+  <div class="devsecops-loop-wrap">
+    <svg class="devsecops-loop" viewBox="0 0 600 600" role="img" aria-label="DevSecOps loop: Plan, Code, Build, Test, Secure, Release, Deploy, Monitor, arranged in a continuous circle around a central shield representing security integrated at every stage">
+      <circle cx="300" cy="300" r="220" fill="none" stroke="var(--border)" stroke-width="2" stroke-dasharray="4 10"/>
+      <circle cx="300" cy="300" r="220" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="18 1200" stroke-linecap="round" class="loop-runner"/>
+
+      <!-- center shield badge -->
+      <circle cx="300" cy="300" r="72" fill="var(--card)" stroke="var(--accent3)" stroke-width="2"/>
+      <text x="300" y="288" text-anchor="middle" font-size="34" class="loop-emoji">🛡️</text>
+      <text x="300" y="322" text-anchor="middle" font-family="var(--mono)" font-size="11" fill="var(--accent3)" letter-spacing="1">SECURE BY</text>
+      <text x="300" y="336" text-anchor="middle" font-family="var(--mono)" font-size="11" fill="var(--accent3)" letter-spacing="1">DEFAULT</text>
+
+      <!-- nodes -->
+      <g class="loop-node">
+        <circle cx="300" cy="80" r="42" fill="var(--surface)" stroke="var(--border)" stroke-width="2"/>
+        <text x="300" y="72" text-anchor="middle" font-size="22">📋</text>
+        <text x="300" y="98" text-anchor="middle" font-family="var(--mono)" font-size="10" fill="var(--text)" letter-spacing="1">PLAN</text>
+      </g>
+      <g class="loop-node">
+        <circle cx="455.6" cy="144.4" r="42" fill="var(--surface)" stroke="var(--border)" stroke-width="2"/>
+        <text x="455.6" y="136.4" text-anchor="middle" font-size="22">💻</text>
+        <text x="455.6" y="162.4" text-anchor="middle" font-family="var(--mono)" font-size="10" fill="var(--text)" letter-spacing="1">CODE</text>
+      </g>
+      <g class="loop-node">
+        <circle cx="520" cy="300" r="42" fill="var(--surface)" stroke="var(--border)" stroke-width="2"/>
+        <text x="520" y="292" text-anchor="middle" font-size="22">🔨</text>
+        <text x="520" y="318" text-anchor="middle" font-family="var(--mono)" font-size="10" fill="var(--text)" letter-spacing="1">BUILD</text>
+      </g>
+      <g class="loop-node">
+        <circle cx="455.6" cy="455.6" r="42" fill="var(--surface)" stroke="var(--border)" stroke-width="2"/>
+        <text x="455.6" y="447.6" text-anchor="middle" font-size="22">🧪</text>
+        <text x="455.6" y="473.6" text-anchor="middle" font-family="var(--mono)" font-size="10" fill="var(--text)" letter-spacing="1">TEST</text>
+      </g>
+      <g class="loop-node loop-node-accent">
+        <circle cx="300" cy="520" r="42" fill="var(--surface)" stroke="var(--accent)" stroke-width="2"/>
+        <text x="300" y="512" text-anchor="middle" font-size="22">🔍</text>
+        <text x="300" y="538" text-anchor="middle" font-family="var(--mono)" font-size="10" fill="var(--accent)" letter-spacing="1">SCAN</text>
+      </g>
+      <g class="loop-node">
+        <circle cx="144.4" cy="455.6" r="42" fill="var(--surface)" stroke="var(--border)" stroke-width="2"/>
+        <text x="144.4" y="447.6" text-anchor="middle" font-size="22">🚀</text>
+        <text x="144.4" y="473.6" text-anchor="middle" font-family="var(--mono)" font-size="10" fill="var(--text)" letter-spacing="1">RELEASE</text>
+      </g>
+      <g class="loop-node">
+        <circle cx="80" cy="300" r="42" fill="var(--surface)" stroke="var(--border)" stroke-width="2"/>
+        <text x="80" y="292" text-anchor="middle" font-size="22">📦</text>
+        <text x="80" y="318" text-anchor="middle" font-family="var(--mono)" font-size="10" fill="var(--text)" letter-spacing="1">DEPLOY</text>
+      </g>
+      <g class="loop-node">
+        <circle cx="144.4" cy="144.4" r="42" fill="var(--surface)" stroke="var(--border)" stroke-width="2"/>
+        <text x="144.4" y="136.4" text-anchor="middle" font-size="22">📈</text>
+        <text x="144.4" y="162.4" text-anchor="middle" font-family="var(--mono)" font-size="10" fill="var(--text)" letter-spacing="1">MONITOR</text>
+      </g>
+    </svg>
+  </div>
+
+  <div class="devsecops-note">
+    <span class="dot-live"></span>
+    Currently deepening this with hands-on <strong>DevSecOps</strong> training — vulnerability scanning, secrets management, and shift-left security practices.
+  </div>
+</section>
+
 <!-- PROJECTS -->
 <section id="projects">
   <div class="section-label">Work</div>
   <div class="section-title">Projects</div>
   <div class="projects-grid">
 
-    <div class="project-card">
-      <div class="project-num"><span>PROJECT_01</span><span class="p-meta">2026</span></div>
-      <div class="project-title">PetClinic Microservices — EKS Deployment with Full IaC</div>
-      <ul class="project-desc-list">
-        <li>Deployed a <strong>Java Spring Boot</strong> microservices app (9 services) on AWS EKS using Terraform/Terragrunt for VPC, cluster, and node provisioning with remote state management.</li>
-        <li>Built a <strong>Jenkins CI/CD pipeline</strong> automating Maven builds, Docker image creation, and deployment to ECR/EKS.</li>
-        <li>Used <strong>Ansible</strong> for CI server configuration and Kubernetes for orchestration, service discovery, and inter-service communication.</li>
-      </ul>
-      <div class="project-stack">
-        <span class="stack-badge badge-blue">AWS EKS</span>
-        <span class="stack-badge badge-orange">Terraform</span>
-        <span class="stack-badge badge-orange">Terragrunt</span>
-        <span class="stack-badge badge-green">Jenkins</span>
-        <span class="stack-badge badge-purple">Ansible</span>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-num"><span>PROJECT_02</span><span class="p-meta">2025 · Zero Server Cost</span></div>
-      <div class="project-title">Serverless Online Examination Platform</div>
-      <ul class="project-desc-list">
-        <li>Architected a fully serverless, auto-scaling exam platform on <strong>Lambda, API Gateway, and DynamoDB</strong>, eliminating server maintenance overhead entirely.</li>
-        <li>Implemented secure authentication for students and admins with <strong>Amazon Cognito</strong> and role-based access control.</li>
-        <li>Built real-time exam monitoring and instant results using <strong>WebSocket APIs</strong> on API Gateway.</li>
-        <li>Secured question papers and submissions in <strong>S3</strong>, with access policies and bucket versioning.</li>
-      </ul>
-      <div class="project-stack">
-        <span class="stack-badge badge-blue">AWS Lambda</span>
-        <span class="stack-badge badge-blue">API Gateway</span>
-        <span class="stack-badge badge-green">DynamoDB</span>
-        <span class="stack-badge badge-purple">Cognito</span>
-        <span class="stack-badge badge-orange">S3</span>
-      </div>
-    </div>
-
     <div class="project-card project-card-wide">
-      <div class="project-num"><span>PROJECT_03</span><span class="p-meta">Technohertz Technologies LLP</span></div>
+      <div class="project-num"><span>PROJECT_01</span><span class="p-meta">Technohertz Technologies LLP</span></div>
       <div class="project-title">Production CI/CD Pipeline — Jenkins, Bitbucket & Amazon EKS</div>
       <p class="project-lead">End-to-end pipeline I designed and now maintain in production, taking client applications from a raw code commit to a running pod on EKS with no manual steps in between.</p>
 
@@ -1070,7 +1198,7 @@ footer .accent { color: var(--accent); }
     </div>
 
     <div class="project-card project-card-wide">
-      <div class="project-num"><span>PROJECT_04</span><span class="p-meta">Ongoing · Client Support</span></div>
+      <div class="project-num"><span>PROJECT_02</span><span class="p-meta">Ongoing · Client Support</span></div>
       <div class="project-title">EC2 Vulnerability Remediation & Client Production Support</div>
       <p class="project-lead">Beyond shipping pipelines, I'm the person clients reach when something's broken in production or a security scan flags a server — from first report to verified fix.</p>
       <ul class="project-desc-list">
@@ -1086,6 +1214,41 @@ footer .accent { color: var(--accent); }
         <span class="stack-badge badge-blue">IAM</span>
         <span class="stack-badge badge-purple">Security Patching</span>
         <span class="stack-badge badge-orange">Bitbucket</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num"><span>PROJECT_03</span><span class="p-meta">2026</span></div>
+      <div class="project-title">PetClinic Microservices — EKS Deployment with Full IaC</div>
+      <ul class="project-desc-list">
+        <li>Deployed a <strong>Java Spring Boot</strong> microservices app (9 services) on AWS EKS using Terraform/Terragrunt for VPC, cluster, and node provisioning with remote state management.</li>
+        <li>Built a <strong>Jenkins CI/CD pipeline</strong> automating Maven builds, Docker image creation, and deployment to ECR/EKS.</li>
+        <li>Used <strong>Ansible</strong> for CI server configuration and Kubernetes for orchestration, service discovery, and inter-service communication.</li>
+      </ul>
+      <div class="project-stack">
+        <span class="stack-badge badge-blue">AWS EKS</span>
+        <span class="stack-badge badge-orange">Terraform</span>
+        <span class="stack-badge badge-orange">Terragrunt</span>
+        <span class="stack-badge badge-green">Jenkins</span>
+        <span class="stack-badge badge-purple">Ansible</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num"><span>PROJECT_04</span><span class="p-meta">2025 · Zero Server Cost</span></div>
+      <div class="project-title">Serverless Online Examination Platform</div>
+      <ul class="project-desc-list">
+        <li>Architected a fully serverless, auto-scaling exam platform on <strong>Lambda, API Gateway, and DynamoDB</strong>, eliminating server maintenance overhead entirely.</li>
+        <li>Implemented secure authentication for students and admins with <strong>Amazon Cognito</strong> and role-based access control.</li>
+        <li>Built real-time exam monitoring and instant results using <strong>WebSocket APIs</strong> on API Gateway.</li>
+        <li>Secured question papers and submissions in <strong>S3</strong>, with access policies and bucket versioning.</li>
+      </ul>
+      <div class="project-stack">
+        <span class="stack-badge badge-blue">AWS Lambda</span>
+        <span class="stack-badge badge-blue">API Gateway</span>
+        <span class="stack-badge badge-green">DynamoDB</span>
+        <span class="stack-badge badge-purple">Cognito</span>
+        <span class="stack-badge badge-orange">S3</span>
       </div>
     </div>
 
@@ -1128,6 +1291,13 @@ footer .accent { color: var(--accent); }
   <div class="section-label">Now</div>
   <div class="section-title">Currently Exploring</div>
   <div class="learning-grid">
+    <div class="learning-card learning-card-featured">
+      <div class="learning-icon l-red">🛡️</div>
+      <div class="learning-body">
+        <h4>DevSecOps — Hands-On</h4>
+        <p>Actively training on shift-left security: vulnerability scanning, secrets management, and integrating security gates directly into the CI/CD pipelines I already run in production. Backed by hands-on labs, not just theory.</p>
+      </div>
+    </div>
     <div class="learning-card">
       <div class="learning-icon l-purple">🤖</div>
       <div class="learning-body">
@@ -1277,7 +1447,7 @@ const revealObserver = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.1 });
 
-document.querySelectorAll('.skill-card, .project-card, .cert-card, .learning-card, .tl-item').forEach(el => {
+document.querySelectorAll('.skill-card, .project-card, .cert-card, .learning-card, .tl-item, .devsecops-loop-wrap, .devsecops-note').forEach(el => {
   if (!prefersReduced) {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
