@@ -1175,9 +1175,38 @@ footer .accent { color: var(--accent); }
   <div class="section-label">Work</div>
   <div class="section-title">Projects</div>
   <div class="projects-grid">
-
     <div class="project-card project-card-wide">
-      <div class="project-num"><span>PROJECT_01</span><span class="p-meta">Technohertz Technologies LLP</span></div>
+  <div class="project-num"><span>PROJECT_01</span><span class="p-meta">Personal Project</span></div>
+  <div class="project-title">Self-Hosted GitOps CI/CD Pipeline — Jenkins, ArgoCD & K3s</div>
+  <p class="project-lead">A fully self-hosted CI/CD pipeline built from scratch on a local K3s cluster, taking a sample application from a Git commit to a live, auto-synced deployment using GitOps principles.</p>
+
+  <div class="pipeline-flow" aria-label="Pipeline stages: Checkout, Build, Dockerize, Push to Docker Hub, Git Sync, Deploy to K3s">
+    <span class="pf-stage">Checkout</span><span class="pf-arrow">→</span>
+    <span class="pf-stage">Build</span><span class="pf-arrow">→</span>
+    <span class="pf-stage">Docker Build</span><span class="pf-arrow">→</span>
+    <span class="pf-stage">Push to Docker Hub</span><span class="pf-arrow">→</span>
+    <span class="pf-stage">ArgoCD Sync</span><span class="pf-arrow">→</span>
+    <span class="pf-stage pf-stage-end">Deploy to K3s</span>
+  </div>
+
+  <ul class="project-desc-list">
+    <li>Designed and deployed a <strong>self-hosted CI/CD pipeline</strong> on a local <strong>K3s Kubernetes cluster</strong>, automating build, containerization, and deployment for a sample application end-to-end.</li>
+    <li>Built <strong>Jenkins pipelines</strong> to automate image builds and pushes to <strong>Docker Hub</strong> on every code change, removing manual build and tagging steps.</li>
+    <li>Implemented <strong>GitOps-based continuous deployment with ArgoCD</strong>, syncing the cluster state directly from a GitHub repository instead of relying on manual <code>kubectl apply</code> commands.</li>
+    <li>Achieved a fully automated flow — <strong>code push → Jenkins build → Docker image → Docker Hub → ArgoCD sync → live deployment on K3s</strong> — with zero manual intervention.</li>
+    <li>Gained hands-on experience designing self-hosted infrastructure end-to-end, without relying on managed cloud CI/CD services.</li>
+  </ul>
+  <div class="project-stack">
+    <span class="stack-badge badge-green">Jenkins</span>
+    <span class="stack-badge badge-green">Docker</span>
+    <span class="stack-badge badge-blue">Docker Hub</span>
+    <span class="stack-badge badge-purple">ArgoCD</span>
+    <span class="stack-badge badge-purple">Kubernetes (K3s)</span>
+    <span class="stack-badge badge-orange">GitOps</span>
+  </div>
+</div>
+    <div class="project-card project-card-wide">
+      <div class="project-num"><span>PROJECT_02</span><span class="p-meta">Technohertz Technologies LLP</span></div>
       <div class="project-title">Production CI/CD Pipeline — Jenkins, Bitbucket & Amazon EKS</div>
       <p class="project-lead">End-to-end pipeline I designed and now maintain in production, taking client applications from a raw code commit to a running pod on EKS with no manual steps in between.</p>
 
@@ -1209,7 +1238,7 @@ footer .accent { color: var(--accent); }
     </div>
 
     <div class="project-card project-card-wide">
-      <div class="project-num"><span>PROJECT_02</span><span class="p-meta">Ongoing · Client Support</span></div>
+      <div class="project-num"><span>PROJECT_03</span><span class="p-meta">Ongoing · Client Support</span></div>
       <div class="project-title">EC2 Vulnerability Remediation & Client Production Support</div>
       <p class="project-lead">Beyond shipping pipelines, I'm the person clients reach when something's broken in production or a security scan flags a server — from first report to verified fix.</p>
       <ul class="project-desc-list">
@@ -1229,7 +1258,7 @@ footer .accent { color: var(--accent); }
     </div>
 
     <div class="project-card">
-      <div class="project-num"><span>PROJECT_03</span><span class="p-meta">2026</span></div>
+      <div class="project-num"><span>PROJECT_04</span><span class="p-meta">2026</span></div>
       <div class="project-title">PetClinic Microservices — EKS Deployment with Full IaC</div>
       <ul class="project-desc-list">
         <li>Deployed a <strong>Java Spring Boot</strong> microservices app (9 services) on AWS EKS using Terraform/Terragrunt for VPC, cluster, and node provisioning with remote state management.</li>
@@ -1246,7 +1275,7 @@ footer .accent { color: var(--accent); }
     </div>
 
     <div class="project-card">
-      <div class="project-num"><span>PROJECT_04</span><span class="p-meta">2025 · Zero Server Cost</span></div>
+      <div class="project-num"><span>PROJECT_05</span><span class="p-meta">2025 · Zero Server Cost</span></div>
       <div class="project-title">Serverless Online Examination Platform</div>
       <ul class="project-desc-list">
         <li>Architected a fully serverless, auto-scaling exam platform on <strong>Lambda, API Gateway, and DynamoDB</strong>, eliminating server maintenance overhead entirely.</li>
